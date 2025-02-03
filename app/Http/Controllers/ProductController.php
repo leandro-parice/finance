@@ -2,63 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('product.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $product = new Product;
+        return view('product.form', compact('product'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'barcode' => 'required|string',
+            'description' => 'nullable|string',
+        ]);
+
+        $product = new Product;
+        $product->name = $request->name;
+        $product->barcode = $request->barcode;
+        $product->description = $request->description;
+        $product->save();
+
+        return redirect()->route('product.index')->with('success', 'Dados criados com sucesso.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $product = Product::findOrfail($id);
+        return view('product.form', compact('product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'barcode' => 'required|string',
+            'description' => 'nullable|string',
+        ]);
+
+        $product = Product::findOrfail($id);
+        $product->name = $request->name;
+        $product->barcode = $request->barcode;
+        $product->description = $request->description;
+        $product->save();
+
+        return redirect()->route('product.index')->with('success', 'Dados editados com sucesso.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $product = Product::findOrfail($id);
+        $product->delete();
+
+        return redirect()->route('product.index')->with('success', 'Dados removidos com sucesso.');
     }
 }

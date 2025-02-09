@@ -21,5 +21,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
-/public/images/to-read
-/public/images/readed
+/public/images/*

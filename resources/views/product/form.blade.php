@@ -30,11 +30,11 @@
                         <div class="flex space-x-4 gap-4">
                             <div class="mb-4 flex-1">
                                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Nome</label>
-                                <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('name', $product->name ?? '') }}" />
+                                <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('name', $product->name ?? '') }}" required />
                             </div>
                             <div class="mb-4 flex-1">
                                 <label for="barcode" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Código de barras</label>
-                                <input type="text" name="barcode" id="barcode" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('barcode', $product->barcode ?? '') }}" />
+                                <input type="text" name="barcode" id="barcode" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('barcode', $product->barcode ?? '') }}" required />
                             </div>
                         </div>
                         <div class="mb-4">

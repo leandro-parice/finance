@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('image-file.index')" :active="request()->routeIs('image-file.index')">
+                        {{ __('Imagens') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('purchase.index')" :active="request()->routeIs('purchase.index')">
                         {{ __('Compras') }}
                     </x-nav-link>
@@ -71,6 +74,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('image-file.index')" :active="request()->routeIs('image-file.index')">
+                {{ __('Imagens') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('purchase.index')" :active="request()->routeIs('purchase.index')">
                 {{ __('Compras') }}

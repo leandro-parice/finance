@@ -15,4 +15,9 @@ class Purchase extends Model
     protected $dates = [
         'date',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_purchases')->withPivot('quantity', 'price', 'total');
+    }
 }

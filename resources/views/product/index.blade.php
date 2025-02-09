@@ -15,20 +15,20 @@
 
                     <a href="{{ route('product.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Novo Produto</a>
 
-                    <table class="table-auto w-full mt-4 border-collapse border border-gray-200">
+                    <table class="table-auto w-full mt-4 border-collapse border border-gray-600">
                         <thead>
-                            <tr class="border border-gray-200">
-                                <th class="border border-gray-200">Nome</th>
-                                <th class="border border-gray-200">Código de barras</th>
-                                <th class="border border-gray-200">Ações</th>
+                            <tr>
+                                <th class="border border-gray-600">Nome</th>
+                                <th class="border border-gray-600">Código de barras</th>
+                                <th class="border border-gray-600">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
-                                <tr class="border border-gray-200">
-                                    <td class="border border-gray-200 text-center py-2 px-4">{{ $product->name }}</td>
-                                    <td class="border border-gray-200 text-center py-2 px-4">{{ $product->barcode }}</td>
-                                    <td class="border border-gray-200 text-center py-2 px-4" x-data="{ openModal: false }">
+                            @foreach ($products as $key => $product)
+                                <tr class="border border-gray-600 text-sm {{ $key % 2 == 0 ? 'bg-gray-800' : 'bg-gray-700' }}">
+                                    <td class="border border-gray-600 text-center py-2 px-4">{{ $product->name }}</td>
+                                    <td class="border border-gray-600 text-center py-2 px-4">{{ $product->barcode }}</td>
+                                    <td class="border border-gray-600 text-center py-2 px-4" x-data="{ openModal: false }">
                                         <a href="{{ route('product.edit', $product->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded inline-block text-xs">Editar</a>
                                         <button type="button" x-on:click="openModal = !openModal" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded inline-block text-xs">Excluir</button>
                                         <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 " x-show="openModal">

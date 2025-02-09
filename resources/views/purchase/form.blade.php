@@ -27,15 +27,15 @@
                         <div class="flex space-x-4 gap-4">
                             <div class="mb-4 flex-1">
                                 <label for="market" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Supermercado</label>
-                                <input type="text" name="market" id="market" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('market', $purchase->market) }}" />
+                                <input type="text" name="market" id="market" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('market', $purchase->market) }}" required />
                             </div>
                             <div class="mb-4 flex-1">
                                 <label for="value" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Valor</label>
-                                <input type="text" name="value" id="value" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('value', $purchase->value) }}" />
+                                <input type="text" name="value" id="value" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('value', $purchase->value) }}" required />
                             </div>
                             <div class="mb-4 flex-1">
                                 <label for="date" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Data</label>
-                                <input type="text" name="date" id="date" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('date', \Carbon\Carbon::parse($purchase->date)->format('d/m/Y')) }}" />
+                                <input type="text" name="date" id="date" class="form-input rounded-md shadow-sm mt-1 block w-full text-gray-800" value="{{ old('date', \Carbon\Carbon::parse($purchase->date)->format('d/m/Y')) }}" required />
                             </div>
                         </div>
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Salvar</button>
